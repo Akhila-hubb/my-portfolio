@@ -125,15 +125,27 @@
 
     <br><br>
 
-    <!-- ✅ DAY 13 MINI APP -->
-    <h3>Try Demo</h3>
-
+    <!-- DAY 13 -->
+    <h3>Simple Demo</h3>
     <input type="text" id="name" placeholder="Enter your name">
     <br><br>
-
     <button onclick="showData()">Submit</button>
-
     <p id="result"></p>
+
+    <br><br>
+
+    <!-- DAY 14 -->
+    <h3>Register Here</h3>
+
+    <input type="text" id="username" placeholder="Enter name">
+    <br><br>
+
+    <input type="email" id="email" placeholder="Enter email">
+    <br><br>
+
+    <button onclick="registerUser()">Register</button>
+
+    <p id="output2"></p>
 
 </section>
 
@@ -146,10 +158,8 @@
     <p>© 2026 Akhila</p>
 </footer>
 
-<!-- ✅ SCRIPT ALWAYS AT BOTTOM -->
 <script>
 function showData() {
-
     let name = document.getElementById("name").value;
 
     if (name === "") {
@@ -159,6 +169,19 @@ function showData() {
 
     document.getElementById("result").innerHTML =
         "Hello " + name + ", welcome!";
+}
+
+function registerUser() {
+    let name = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+
+    if (name === "" || email === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    document.getElementById("output2").innerHTML =
+        "Name: " + name + "<br>Email: " + email;
 }
 </script>
 
