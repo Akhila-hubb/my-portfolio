@@ -4,70 +4,87 @@
 <head>
     <title>Akhila Portfolio</title>
 
-    <!-- Mobile Responsive -->
+    <!-- MOBILE RESPONSIVE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
 
-        /* Smooth Scroll */
+        /* SMOOTH SCROLL */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Body */
+        /* BODY */
         body {
             margin: 0;
             font-family: Arial;
             background-color: #f4f4f4;
+
+            /* SMOOTH THEME CHANGE */
+            transition: 0.5s;
         }
 
-        /* Navbar */
+        /* DARK MODE */
+        .dark {
+            background-color: #222;
+            color: white;
+        }
+
+        /* NAVBAR */
         nav {
             background: black;
             color: white;
+
             padding: 15px;
 
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
-        /* Navbar Links */
+        /* NAVBAR LINKS */
         nav a {
             color: white;
             margin: 10px;
             text-decoration: none;
         }
 
-        /* Hover Effect */
+        /* HOVER EFFECT */
         nav a:hover {
             color: orange;
         }
 
-        /* Header */
+        /* HEADER */
         header {
             background: linear-gradient(to right, blue, purple);
+
             color: white;
+
             text-align: center;
+
             padding: 40px;
         }
 
-        /* Sections */
+        /* SECTIONS */
         section {
             padding: 20px;
         }
 
-        /* Projects Container */
+        /* PROJECTS CONTAINER */
         .projects {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* Project Card */
+        /* PROJECT CARD */
         .card {
             background: white;
+
             padding: 15px;
+
             border-radius: 10px;
+
             width: 250px;
 
             box-shadow: 0px 0px 10px gray;
@@ -75,39 +92,48 @@
             transition: 0.3s;
         }
 
-        /* Card Hover */
+        /* CARD HOVER */
         .card:hover {
             transform: scale(1.08);
         }
 
-        /* Inputs */
+        /* INPUT */
         input {
             padding: 8px;
+
             width: 200px;
+
             margin-bottom: 10px;
         }
 
-        /* Buttons */
+        /* BUTTON */
         button {
             padding: 8px 15px;
+
             background: blue;
+
             color: white;
+
             border: none;
+
             border-radius: 5px;
+
             cursor: pointer;
 
             margin-right: 10px;
         }
 
-        /* Button Hover */
+        /* BUTTON HOVER */
         button:hover {
             background: darkblue;
         }
 
-        /* Form Box */
+        /* FORM BOX */
         .form-box {
             background: white;
+
             padding: 20px;
+
             width: 250px;
 
             border-radius: 10px;
@@ -115,15 +141,19 @@
             box-shadow: 0px 0px 10px gray;
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
             background: black;
+
             color: white;
+
             text-align: center;
+
             padding: 10px;
         }
 
     </style>
+
 </head>
 
 <body>
@@ -131,14 +161,28 @@
     <!-- NAVBAR -->
     <nav>
 
+        <!-- LEFT -->
         <div>
             <b>Akhila</b>
         </div>
 
+        <!-- RIGHT -->
         <div>
+
             <a href="#home">Home</a>
+
             <a href="#projects">Projects</a>
+
             <a href="#contact">Contact</a>
+
+            <!-- DARK MODE BUTTON -->
+            <button id="themeButton"
+                    onclick="toggleDarkMode()">
+
+                Dark Mode 🌙
+
+            </button>
+
         </div>
 
     </nav>
@@ -208,7 +252,7 @@
 
         <br><br>
 
-        <!-- DAY 13 -->
+        <!-- SIMPLE DEMO -->
         <h3>Simple Demo</h3>
 
         <input type="text"
@@ -216,14 +260,16 @@
                placeholder="Enter your name">
 
         <button onclick="showData()">
+
             Submit
+
         </button>
 
         <p id="result"></p>
 
         <br><br>
 
-        <!-- DAY 14 + 15 + 16 + 17 -->
+        <!-- REGISTER SECTION -->
         <h3>Register Here</h3>
 
         <div class="form-box">
@@ -257,12 +303,16 @@
 
             <!-- REGISTER BUTTON -->
             <button onclick="registerUser()">
+
                 Register
+
             </button>
 
             <!-- CLEAR BUTTON -->
             <button onclick="clearData()">
+
                 Clear Data
+
             </button>
 
             <br><br>
@@ -297,9 +347,10 @@
     <!-- JAVASCRIPT -->
     <script>
 
-        /* DAY 13 FUNCTION */
+        /* SIMPLE DEMO FUNCTION */
         function showData() {
 
+            /* GET INPUT VALUE */
             let name =
                 document.getElementById("name").value;
 
@@ -370,7 +421,7 @@
             let savedAge =
                 localStorage.getItem("savedAge");
 
-            /* CHECK SAVED DATA */
+            /* CHECK DATA EXISTS */
             if (savedName &&
                 savedEmail &&
                 savedAge) {
@@ -389,7 +440,7 @@
         /* CLEAR DATA FUNCTION */
         function clearData() {
 
-            /* REMOVE DATA */
+            /* REMOVE SAVED DATA */
             localStorage.removeItem("savedName");
 
             localStorage.removeItem("savedEmail");
@@ -401,6 +452,31 @@
 
             /* ALERT */
             alert("Saved data cleared!");
+
+        }
+
+        /* DARK MODE FUNCTION */
+        function toggleDarkMode() {
+
+            /* TOGGLE DARK CLASS */
+            document.body.classList.toggle("dark");
+
+            /* ACCESS BUTTON */
+            let button =
+                document.getElementById("themeButton");
+
+            /* CHECK DARK MODE */
+            if (document.body.classList.contains("dark")) {
+
+                button.innerHTML = "Light Mode ☀️";
+
+            }
+
+            else {
+
+                button.innerHTML = "Dark Mode 🌙";
+
+            }
 
         }
 
