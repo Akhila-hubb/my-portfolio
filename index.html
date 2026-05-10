@@ -3,35 +3,48 @@
 
 <head>
     <title>Akhila Portfolio</title>
+
+    <!-- Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        html { scroll-behavior: smooth; }
 
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Body styling */
         body {
             margin: 0;
             font-family: Arial;
             background-color: #f4f4f4;
         }
 
+        /* Navbar */
         nav {
             background: black;
             color: white;
             padding: 15px;
+
+            /* Flexbox */
             display: flex;
             justify-content: space-between;
         }
 
+        /* Navbar links */
         nav a {
             color: white;
             margin: 10px;
             text-decoration: none;
         }
 
+        /* Hover effect */
         nav a:hover {
             color: orange;
         }
 
+        /* Header */
         header {
             background: linear-gradient(to right, blue, purple);
             color: white;
@@ -39,166 +52,329 @@
             padding: 40px;
         }
 
+        /* Sections */
         section {
             padding: 20px;
         }
 
+        /* Project cards container */
         .projects {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
+        /* Card */
         .card {
             background: white;
             padding: 15px;
             border-radius: 10px;
             width: 250px;
             box-shadow: 0px 0px 10px gray;
+
+            /* Smooth hover */
             transition: 0.3s;
         }
 
+        /* Card hover */
         .card:hover {
             transform: scale(1.08);
         }
 
+        /* Inputs */
         input {
             padding: 8px;
             width: 200px;
             margin-bottom: 10px;
         }
 
+        /* Buttons */
         button {
             padding: 8px 15px;
             background: blue;
             color: white;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
 
+        /* Button hover */
         button:hover {
             background: darkblue;
         }
 
+        /* Form box */
         .form-box {
             background: white;
             padding: 20px;
             width: 250px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px gray;
-            margin-top: 10px;
         }
 
+        /* Footer */
         footer {
             background: black;
             color: white;
             text-align: center;
             padding: 10px;
         }
+
     </style>
 </head>
 
 <body>
 
-<nav>
-    <div><b>Akhila</b></div>
-    <div>
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
+    <!-- NAVBAR -->
+    <nav>
 
-<header id="home">
-    <h1>Mandla Akhila</h1>
-    <p>Aspiring Full Stack Developer</p>
-</header>
-
-<section>
-    <h2>About Me</h2>
-    <p>I am learning full stack development.</p>
-</section>
-
-<section>
-    <h2>Skills</h2>
-    <p>HTML, CSS, JavaScript</p>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="projects">
-        <div class="card">
-            <h3>Student Form</h3>
-            <p>Form with validation</p>
-            <a href="https://akhila-hubb.github.io/student-form/" target="_blank">
-                View Project
-            </a>
+        <div>
+            <b>Akhila</b>
         </div>
-    </div>
 
-    <br><br>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
 
-    <!-- DAY 13 -->
-    <h3>Simple Demo</h3>
-    <input type="text" id="name" placeholder="Enter your name">
-    <button onclick="showData()">Submit</button>
-    <p id="result"></p>
+    </nav>
 
-    <br><br>
+    <!-- HEADER -->
+    <header id="home">
 
-    <!-- DAY 14 + 15 -->
-    <h3>Register Here</h3>
+        <h1>Mandla Akhila</h1>
 
-    <div class="form-box">
-        <label>Name:</label>
-        <input type="text" id="username" placeholder="Enter name">
+        <p>
+            Aspiring Full Stack Developer
+        </p>
 
-        <label>Email:</label>
-        <input type="email" id="email" placeholder="Enter email">
+    </header>
 
-        <button onclick="registerUser()">Register</button>
+    <!-- ABOUT -->
+    <section>
 
-        <p id="output2"></p>
-    </div>
+        <h2>About Me</h2>
 
-</section>
+        <p>
+            I am learning Full Stack Web Development
+            and building projects.
+        </p>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: a3281617@gmail.com</p>
-</section>
+    </section>
 
-<footer>
-    <p>© 2026 Akhila</p>
-</footer>
+    <!-- SKILLS -->
+    <section>
 
-<script>
-function showData() {
-    let name = document.getElementById("name").value;
+        <h2>Skills</h2>
 
-    if (name === "") {
-        alert("Please enter your name");
-        return;
-    }
+        <p>
+            HTML, CSS, JavaScript
+        </p>
 
-    document.getElementById("result").innerHTML =
-        "Hello " + name + ", welcome!";
-}
+    </section>
 
-function registerUser() {
-    let name = document.getElementById("username").value;
-    let email = document.getElementById("email").value;
+    <!-- PROJECTS -->
+    <section id="projects">
 
-    if (name === "" || email === "") {
-        alert("Please fill all fields");
-        return;
-    }
+        <h2>Projects</h2>
 
-    document.getElementById("output2").innerHTML =
-        "Name: " + name + "<br>Email: " + email;
-}
-</script>
+        <div class="projects">
+
+            <!-- PROJECT CARD -->
+            <div class="card">
+
+                <h3>Student Registration Form</h3>
+
+                <p>
+                    Form with validation using
+                    HTML, CSS, JavaScript
+                </p>
+
+                <a href="https://akhila-hubb.github.io/student-form/"
+                   target="_blank">
+
+                    View Project
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <!-- DAY 13 -->
+        <h3>Simple Demo</h3>
+
+        <input type="text"
+               id="name"
+               placeholder="Enter your name">
+
+        <button onclick="showData()">
+            Submit
+        </button>
+
+        <p id="result"></p>
+
+        <br><br>
+
+        <!-- DAY 14 + 15 + 16 -->
+        <h3>Register Here</h3>
+
+        <div class="form-box">
+
+            <!-- NAME -->
+            <label>Name:</label><br>
+
+            <input type="text"
+                   id="username"
+                   placeholder="Enter name">
+
+            <br>
+
+            <!-- EMAIL -->
+            <label>Email:</label><br>
+
+            <input type="email"
+                   id="email"
+                   placeholder="Enter email">
+
+            <br>
+
+            <!-- AGE -->
+            <label>Age:</label><br>
+
+            <input type="number"
+                   id="age"
+                   placeholder="Enter age">
+
+            <br><br>
+
+            <!-- BUTTON -->
+            <button onclick="registerUser()">
+                Register
+            </button>
+
+            <br><br>
+
+            <!-- OUTPUT -->
+            <p id="output2"></p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <h2>Contact</h2>
+
+        <p>
+            Email: a3281617@gmail.com
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Akhila
+        </p>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        /* DAY 13 FUNCTION */
+        function showData() {
+
+            let name =
+                document.getElementById("name").value;
+
+            if (name === "") {
+
+                alert("Please enter your name");
+
+                return;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Hello " + name + ", welcome!";
+        }
+
+        /* DAY 16 FUNCTION */
+        function registerUser() {
+
+            /* GET VALUES */
+            let name =
+                document.getElementById("username").value;
+
+            let email =
+                document.getElementById("email").value;
+
+            let age =
+                document.getElementById("age").value;
+
+            /* VALIDATION */
+            if (name === "" ||
+                email === "" ||
+                age === "") {
+
+                alert("Please fill all fields");
+
+                return;
+            }
+
+            /* SAVE DATA */
+            localStorage.setItem("savedName", name);
+
+            localStorage.setItem("savedEmail", email);
+
+            localStorage.setItem("savedAge", age);
+
+            /* DISPLAY OUTPUT */
+            document.getElementById("output2").innerHTML =
+
+                "Name: " + name +
+
+                "<br>Email: " + email +
+
+                "<br>Age: " + age;
+        }
+
+        /* LOAD SAVED DATA */
+        window.onload = function () {
+
+            let savedName =
+                localStorage.getItem("savedName");
+
+            let savedEmail =
+                localStorage.getItem("savedEmail");
+
+            let savedAge =
+                localStorage.getItem("savedAge");
+
+            /* CHECK DATA EXISTS */
+            if (savedName &&
+                savedEmail &&
+                savedAge) {
+
+                document.getElementById("output2").innerHTML =
+
+                    "Saved Name: " + savedName +
+
+                    "<br>Saved Email: " + savedEmail +
+
+                    "<br>Saved Age: " + savedAge;
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>
