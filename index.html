@@ -9,12 +9,12 @@
 
     <style>
 
-        /* Smooth scrolling */
+        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Body styling */
+        /* Body */
         body {
             margin: 0;
             font-family: Arial;
@@ -27,19 +27,18 @@
             color: white;
             padding: 15px;
 
-            /* Flexbox */
             display: flex;
             justify-content: space-between;
         }
 
-        /* Navbar links */
+        /* Navbar Links */
         nav a {
             color: white;
             margin: 10px;
             text-decoration: none;
         }
 
-        /* Hover effect */
+        /* Hover Effect */
         nav a:hover {
             color: orange;
         }
@@ -57,26 +56,26 @@
             padding: 20px;
         }
 
-        /* Project cards container */
+        /* Projects Container */
         .projects {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* Card */
+        /* Project Card */
         .card {
             background: white;
             padding: 15px;
             border-radius: 10px;
             width: 250px;
+
             box-shadow: 0px 0px 10px gray;
 
-            /* Smooth hover */
             transition: 0.3s;
         }
 
-        /* Card hover */
+        /* Card Hover */
         .card:hover {
             transform: scale(1.08);
         }
@@ -96,19 +95,23 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+
+            margin-right: 10px;
         }
 
-        /* Button hover */
+        /* Button Hover */
         button:hover {
             background: darkblue;
         }
 
-        /* Form box */
+        /* Form Box */
         .form-box {
             background: white;
             padding: 20px;
             width: 250px;
+
             border-radius: 10px;
+
             box-shadow: 0px 0px 10px gray;
         }
 
@@ -174,14 +177,15 @@
 
     </section>
 
-    <!-- PROJECTS -->
+    <!-- PROJECT SECTION -->
     <section id="projects">
 
         <h2>Projects</h2>
 
+        <!-- PROJECT CARDS -->
         <div class="projects">
 
-            <!-- PROJECT CARD -->
+            <!-- CARD -->
             <div class="card">
 
                 <h3>Student Registration Form</h3>
@@ -219,7 +223,7 @@
 
         <br><br>
 
-        <!-- DAY 14 + 15 + 16 -->
+        <!-- DAY 14 + 15 + 16 + 17 -->
         <h3>Register Here</h3>
 
         <div class="form-box">
@@ -251,9 +255,14 @@
 
             <br><br>
 
-            <!-- BUTTON -->
+            <!-- REGISTER BUTTON -->
             <button onclick="registerUser()">
                 Register
+            </button>
+
+            <!-- CLEAR BUTTON -->
+            <button onclick="clearData()">
+                Clear Data
             </button>
 
             <br><br>
@@ -294,6 +303,7 @@
             let name =
                 document.getElementById("name").value;
 
+            /* VALIDATION */
             if (name === "") {
 
                 alert("Please enter your name");
@@ -301,11 +311,13 @@
                 return;
             }
 
+            /* DISPLAY OUTPUT */
             document.getElementById("result").innerHTML =
+
                 "Hello " + name + ", welcome!";
         }
 
-        /* DAY 16 FUNCTION */
+        /* REGISTER FUNCTION */
         function registerUser() {
 
             /* GET VALUES */
@@ -343,6 +355,7 @@
                 "<br>Email: " + email +
 
                 "<br>Age: " + age;
+
         }
 
         /* LOAD SAVED DATA */
@@ -357,7 +370,7 @@
             let savedAge =
                 localStorage.getItem("savedAge");
 
-            /* CHECK DATA EXISTS */
+            /* CHECK SAVED DATA */
             if (savedName &&
                 savedEmail &&
                 savedAge) {
@@ -370,6 +383,24 @@
 
                     "<br>Saved Age: " + savedAge;
             }
+
+        }
+
+        /* CLEAR DATA FUNCTION */
+        function clearData() {
+
+            /* REMOVE DATA */
+            localStorage.removeItem("savedName");
+
+            localStorage.removeItem("savedEmail");
+
+            localStorage.removeItem("savedAge");
+
+            /* CLEAR OUTPUT */
+            document.getElementById("output2").innerHTML = "";
+
+            /* ALERT */
+            alert("Saved data cleared!");
 
         }
 
