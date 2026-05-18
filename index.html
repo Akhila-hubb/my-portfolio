@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <title>Akhila Portfolio</title>
 
     <!-- MOBILE RESPONSIVE -->
@@ -20,7 +21,6 @@
             font-family: Arial;
             background-color: #f4f4f4;
 
-            /* SMOOTH THEME CHANGE */
             transition: 0.5s;
         }
 
@@ -42,7 +42,7 @@
             align-items: center;
         }
 
-        /* NAVBAR LINKS */
+        /* NAV LINKS */
         nav a {
             color: white;
             margin: 10px;
@@ -65,19 +65,19 @@
             padding: 40px;
         }
 
-        /* SECTIONS */
+        /* SECTION */
         section {
             padding: 20px;
         }
 
-        /* PROJECTS CONTAINER */
+        /* PROJECT CONTAINER */
         .projects {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* PROJECT CARD */
+        /* CARD */
         .card {
             background: white;
 
@@ -101,7 +101,7 @@
         input {
             padding: 8px;
 
-            width: 200px;
+            width: 220px;
 
             margin-bottom: 10px;
         }
@@ -134,11 +134,33 @@
 
             padding: 20px;
 
-            width: 250px;
+            width: 260px;
 
             border-radius: 10px;
 
             box-shadow: 0px 0px 10px gray;
+        }
+
+        /* TODO LIST */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+
+            margin: 10px 0;
+
+            padding: 10px;
+
+            border-radius: 5px;
+
+            box-shadow: 0px 0px 5px gray;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* FOOTER */
@@ -161,12 +183,10 @@
     <!-- NAVBAR -->
     <nav>
 
-        <!-- LEFT -->
         <div>
             <b>Akhila</b>
         </div>
 
-        <!-- RIGHT -->
         <div>
 
             <a href="#home">Home</a>
@@ -226,10 +246,9 @@
 
         <h2>Projects</h2>
 
-        <!-- PROJECT CARDS -->
+        <!-- PROJECT CARD -->
         <div class="projects">
 
-            <!-- CARD -->
             <div class="card">
 
                 <h3>Student Registration Form</h3>
@@ -322,6 +341,24 @@
 
         </div>
 
+        <br><br>
+
+        <!-- DAY 19 TODO APP -->
+        <h2>My To-Do List</h2>
+
+        <input type="text"
+               id="taskInput"
+               placeholder="Enter task">
+
+        <button onclick="addTask()">
+
+            Add Task
+
+        </button>
+
+        <!-- TASK LIST -->
+        <ul id="taskList"></ul>
+
     </section>
 
     <!-- CONTACT -->
@@ -350,7 +387,6 @@
         /* SIMPLE DEMO FUNCTION */
         function showData() {
 
-            /* GET INPUT VALUE */
             let name =
                 document.getElementById("name").value;
 
@@ -362,7 +398,7 @@
                 return;
             }
 
-            /* DISPLAY OUTPUT */
+            /* OUTPUT */
             document.getElementById("result").innerHTML =
 
                 "Hello " + name + ", welcome!";
@@ -371,7 +407,6 @@
         /* REGISTER FUNCTION */
         function registerUser() {
 
-            /* GET VALUES */
             let name =
                 document.getElementById("username").value;
 
@@ -406,7 +441,6 @@
                 "<br>Email: " + email +
 
                 "<br>Age: " + age;
-
         }
 
         /* LOAD SAVED DATA */
@@ -421,7 +455,7 @@
             let savedAge =
                 localStorage.getItem("savedAge");
 
-            /* CHECK DATA EXISTS */
+            /* CHECK DATA */
             if (savedName &&
                 savedEmail &&
                 savedAge) {
@@ -440,7 +474,7 @@
         /* CLEAR DATA FUNCTION */
         function clearData() {
 
-            /* REMOVE SAVED DATA */
+            /* REMOVE DATA */
             localStorage.removeItem("savedName");
 
             localStorage.removeItem("savedEmail");
@@ -450,15 +484,13 @@
             /* CLEAR OUTPUT */
             document.getElementById("output2").innerHTML = "";
 
-            /* ALERT */
             alert("Saved data cleared!");
-
         }
 
         /* DARK MODE FUNCTION */
         function toggleDarkMode() {
 
-            /* TOGGLE DARK CLASS */
+            /* TOGGLE CLASS */
             document.body.classList.toggle("dark");
 
             /* ACCESS BUTTON */
@@ -469,14 +501,58 @@
             if (document.body.classList.contains("dark")) {
 
                 button.innerHTML = "Light Mode ☀️";
-
             }
 
             else {
 
                 button.innerHTML = "Dark Mode 🌙";
+            }
+
+        }
+
+        /* DAY 19 TODO FUNCTION */
+        function addTask() {
+
+            /* GET INPUT */
+            let task =
+                document.getElementById("taskInput").value;
+
+            /* VALIDATION */
+            if (task === "") {
+
+                alert("Please enter a task");
+
+                return;
+            }
+
+            /* CREATE LIST ITEM */
+            let li =
+                document.createElement("li");
+
+            li.innerHTML = task;
+
+            /* CREATE DELETE BUTTON */
+            let deleteButton =
+                document.createElement("button");
+
+            deleteButton.innerHTML = "Delete";
+
+            /* DELETE TASK */
+            deleteButton.onclick = function () {
+
+                li.remove();
 
             }
+
+            /* ADD BUTTON TO LI */
+            li.appendChild(deleteButton);
+
+            /* ADD LI TO UL */
+            document.getElementById("taskList")
+                .appendChild(li);
+
+            /* CLEAR INPUT */
+            document.getElementById("taskInput").value = "";
 
         }
 
