@@ -6,7 +6,8 @@
     <title>Akhila Portfolio</title>
 
     <!-- MOBILE RESPONSIVE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <style>
 
@@ -343,7 +344,7 @@
 
         <br><br>
 
-        <!-- DAY 19 TODO APP -->
+        <!-- TODO APP -->
         <h2>My To-Do List</h2>
 
         <input type="text"
@@ -383,6 +384,9 @@
 
     <!-- JAVASCRIPT -->
     <script>
+
+        /* ARRAY TO STORE TASKS */
+        let tasks = [];
 
         /* SIMPLE DEMO FUNCTION */
         function showData() {
@@ -443,34 +447,6 @@
                 "<br>Age: " + age;
         }
 
-        /* LOAD SAVED DATA */
-        window.onload = function () {
-
-            let savedName =
-                localStorage.getItem("savedName");
-
-            let savedEmail =
-                localStorage.getItem("savedEmail");
-
-            let savedAge =
-                localStorage.getItem("savedAge");
-
-            /* CHECK DATA */
-            if (savedName &&
-                savedEmail &&
-                savedAge) {
-
-                document.getElementById("output2").innerHTML =
-
-                    "Saved Name: " + savedName +
-
-                    "<br>Saved Email: " + savedEmail +
-
-                    "<br>Saved Age: " + savedAge;
-            }
-
-        }
-
         /* CLEAR DATA FUNCTION */
         function clearData() {
 
@@ -510,10 +486,10 @@
 
         }
 
-        /* DAY 19 TODO FUNCTION */
+        /* ADD TASK FUNCTION */
         function addTask() {
 
-            /* GET INPUT */
+            /* GET INPUT VALUE */
             let task =
                 document.getElementById("taskInput").value;
 
@@ -525,34 +501,115 @@
                 return;
             }
 
-            /* CREATE LIST ITEM */
-            let li =
-                document.createElement("li");
+            /* ADD TASK TO ARRAY */
+            tasks.push(task);
 
-            li.innerHTML = task;
+            /* SAVE ARRAY TO LOCALSTORAGE */
+            localStorage.setItem(
+                "tasks",
+                JSON.stringify(tasks)
+            );
 
-            /* CREATE DELETE BUTTON */
-            let deleteButton =
-                document.createElement("button");
-
-            deleteButton.innerHTML = "Delete";
-
-            /* DELETE TASK */
-            deleteButton.onclick = function () {
-
-                li.remove();
-
-            }
-
-            /* ADD BUTTON TO LI */
-            li.appendChild(deleteButton);
-
-            /* ADD LI TO UL */
-            document.getElementById("taskList")
-                .appendChild(li);
+            /* DISPLAY TASKS */
+            displayTasks();
 
             /* CLEAR INPUT */
             document.getElementById("taskInput").value = "";
+
+        }
+
+        /* DISPLAY TASKS FUNCTION */
+        function displayTasks() {
+
+            let taskList =
+                document.getElementById("taskList");
+
+            /* CLEAR OLD TASKS */
+            taskList.innerHTML = "";
+
+            /* LOOP THROUGH TASKS */
+            tasks.forEach(function(task, index) {
+
+                /* CREATE LI */
+                let li =
+                    document.createElement("li");
+
+                li.innerHTML = task;
+
+                /* CREATE DELETE BUTTON */
+                let deleteButton =
+                    document.createElement("button");
+
+                deleteButton.innerHTML = "Delete";
+
+                /* DELETE TASK */
+                deleteButton.onclick = function() {
+
+                    /* REMOVE TASK FROM ARRAY */
+                    tasks.splice(index, 1);
+
+                    /* UPDATE LOCALSTORAGE */
+                    localStorage.setItem(
+                        "tasks",
+                        JSON.stringify(tasks)
+                    );
+
+                    /* REFRESH TASK DISPLAY */
+                    displayTasks();
+
+                }
+
+                /* ADD BUTTON TO LI */
+                li.appendChild(deleteButton);
+
+                /* ADD LI TO UL */
+                taskList.appendChild(li);
+
+            });
+
+        }
+
+        /* PAGE LOAD FUNCTION */
+        window.onload = function() {
+
+            /* LOAD FORM DATA */
+            let savedName =
+                localStorage.getItem("savedName");
+
+            let savedEmail =
+                localStorage.getItem("savedEmail");
+
+            let savedAge =
+                localStorage.getItem("savedAge");
+
+            /* DISPLAY SAVED FORM DATA */
+            if (savedName &&
+                savedEmail &&
+                savedAge) {
+
+                document.getElementById("output2").innerHTML =
+
+                    "Saved Name: " + savedName +
+
+                    "<br>Saved Email: " + savedEmail +
+
+                    "<br>Saved Age: " + savedAge;
+            }
+
+            /* LOAD TASKS */
+            let savedTasks =
+                localStorage.getItem("tasks");
+
+            /* CHECK TASKS EXIST */
+            if (savedTasks) {
+
+                /* CONVERT TEXT BACK TO ARRAY */
+                tasks = JSON.parse(savedTasks);
+
+                /* DISPLAY TASKS */
+                displayTasks();
+
+            }
 
         }
 
