@@ -164,6 +164,12 @@
             align-items: center;
         }
 
+        /* COUNTER */
+        #count {
+            font-size: 50px;
+            color: blue;
+        }
+
         /* FOOTER */
         footer {
             background: black;
@@ -360,6 +366,31 @@
         <!-- TASK LIST -->
         <ul id="taskList"></ul>
 
+        <br><br>
+
+        <!-- DAY 21 COUNTER APP -->
+        <h2>Counter App</h2>
+
+        <h1 id="count">0</h1>
+
+        <button onclick="increaseCount()">
+
+            Increase +
+
+        </button>
+
+        <button onclick="decreaseCount()">
+
+            Decrease -
+
+        </button>
+
+        <button onclick="resetCount()">
+
+            Reset
+
+        </button>
+
     </section>
 
     <!-- CONTACT -->
@@ -387,6 +418,9 @@
 
         /* ARRAY TO STORE TASKS */
         let tasks = [];
+
+        /* COUNTER VARIABLE */
+        let count = 0;
 
         /* SIMPLE DEMO FUNCTION */
         function showData() {
@@ -566,6 +600,36 @@
                 taskList.appendChild(li);
 
             });
+
+        }
+
+        /* INCREASE COUNTER */
+        function increaseCount() {
+
+            count++;
+
+            document.getElementById("count")
+                .textContent = count;
+
+        }
+
+        /* DECREASE COUNTER */
+        function decreaseCount() {
+
+            count--;
+
+            document.getElementById("count")
+                .textContent = count;
+
+        }
+
+        /* RESET COUNTER */
+        function resetCount() {
+
+            count = 0;
+
+            document.getElementById("count")
+                .textContent = count;
 
         }
 
